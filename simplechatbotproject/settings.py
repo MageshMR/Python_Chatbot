@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-2*qtal_m7r))zji66i2&0o8vp$_r&_154492c=7qf5^_-8v1g3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['python-chatbot-j32c.onrender.com']
 
 
 # Application definition
@@ -52,6 +52,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -132,3 +134,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 STATICFILES_DIRS = [ BASE_DIR / 'static' ]
+
+import os
+        
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
